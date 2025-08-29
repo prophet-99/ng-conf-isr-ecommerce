@@ -1,1 +1,420 @@
-<p>product-detail works!</p>
+<app-promotional-bar />
+
+<app-header />
+
+<!-- Breadcrumbs -->
+<app-breadcrumb [items]="['Inicio', 'Tienda', 'Detalles del producto']" />
+
+<!-- Main Content -->
+<main class="main">
+  <div class="container">
+    <div class="product-layout">
+      <!-- Product Gallery -->
+      <div class="product-gallery">
+        <div class="gallery-main">
+          <button
+            class="gallery-nav gallery-nav--prev"
+            id="gallery-prev"
+            aria-label="Previous image"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M15 18l-6-6 6-6"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <img
+            id="main-image"
+            src="/placeholder.svg?height=500&width=500"
+            alt="SilkSkin Serum"
+            class="gallery-main__image"
+          />
+          <button
+            class="gallery-nav gallery-nav--next"
+            id="gallery-next"
+            aria-label="Next image"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M9 18l6-6-6-6"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="gallery-thumbnails" id="gallery-thumbnails">
+          <button
+            class="thumbnail thumbnail--active"
+            data-image="/placeholder.svg?height=500&width=500"
+          >
+            <img
+              src="/placeholder.svg?height=80&width=80"
+              alt="SilkSkin Serum - Main view"
+            />
+          </button>
+          <button
+            class="thumbnail"
+            data-image="/placeholder.svg?height=500&width=500"
+          >
+            <img
+              src="/placeholder.svg?height=80&width=80"
+              alt="SilkSkin Serum - Ingredients"
+            />
+          </button>
+          <button
+            class="thumbnail"
+            data-image="/placeholder.svg?height=500&width=500"
+          >
+            <img
+              src="/placeholder.svg?height=80&width=80"
+              alt="SilkSkin Serum - Texture"
+            />
+          </button>
+          <button
+            class="thumbnail"
+            data-image="/placeholder.svg?height=500&width=500"
+          >
+            <img
+              src="/placeholder.svg?height=80&width=80"
+              alt="SilkSkin Serum - Packaging"
+            />
+          </button>
+        </div>
+      </div>
+
+      <!-- Product Info -->
+      <div class="product-info">
+        <div class="product-header">
+          <span class="product-category">Skin Care</span>
+          <h1 class="product-title">SilkSkin Serum</h1>
+          <div class="product-rating">
+            <div class="stars">
+              <span class="star star--filled">★</span>
+              <span class="star star--filled">★</span>
+              <span class="star star--filled">★</span>
+              <span class="star star--filled">★</span>
+              <span class="star star--filled">★</span>
+            </div>
+            <span class="rating-score">4.8</span>
+            <span class="rating-count">(245 reviews)</span>
+          </div>
+        </div>
+
+        <div class="product-pricing">
+          <span class="price-current">$48.00</span>
+          <span class="price-old">$60.00</span>
+        </div>
+
+        <p class="product-description">
+          A luxurious anti-aging serum that combines powerful peptides with
+          natural botanicals to restore skin's youthful radiance. Clinically
+          proven to reduce fine lines and improve skin texture.
+        </p>
+
+        <!-- Size Selection -->
+        <div class="product-options">
+          <div class="option-group">
+            <label class="option-label">Size/Volume</label>
+            <div class="size-pills" id="size-options">
+              <button class="size-pill" data-size="30ml">30 ml</button>
+              <button class="size-pill size-pill--selected" data-size="60ml">
+                60 ml
+              </button>
+              <button class="size-pill" data-size="80ml">80 ml</button>
+              <button class="size-pill" data-size="100ml">100 ml</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Purchase Controls -->
+        <div class="product-controls">
+          <div class="quantity-control">
+            <label for="quantity" class="sr-only">Quantity</label>
+            <button
+              class="qty-btn qty-btn--minus"
+              id="qty-minus"
+              aria-label="Decrease quantity"
+            >
+              -
+            </button>
+            <input
+              type="number"
+              id="quantity"
+              class="qty-input"
+              value="1"
+              min="1"
+              max="10"
+            />
+            <button
+              class="qty-btn qty-btn--plus"
+              id="qty-plus"
+              aria-label="Increase quantity"
+            >
+              +
+            </button>
+          </div>
+          <button class="btn btn--primary btn--large" id="add-to-cart">
+            Add To Cart
+          </button>
+          <button class="btn btn--secondary btn--large" id="buy-now">
+            Buy Now
+          </button>
+        </div>
+
+        <!-- Product Meta -->
+        <div class="product-meta">
+          <div class="meta-item">
+            <span class="meta-label">SKU:</span>
+            <span class="meta-value">SS-001-60ML</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Tags:</span>
+            <div class="tag-list">
+              <span class="tag">Anti-aging</span>
+              <span class="tag">Peptides</span>
+              <span class="tag">Hydrating</span>
+            </div>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Share:</span>
+            <div class="share-buttons">
+              <button class="share-btn" aria-label="Share on Facebook">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                  />
+                </svg>
+              </button>
+              <button class="share-btn" aria-label="Share on Twitter">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
+                  />
+                </svg>
+              </button>
+              <button class="share-btn" aria-label="Share on Pinterest">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Tabs -->
+    <div class="product-tabs">
+      <div class="tabs-nav" role="tablist">
+        <button
+          class="tab-btn tab-btn--active"
+          role="tab"
+          aria-selected="true"
+          aria-controls="description-panel"
+          id="description-tab"
+        >
+          Description
+        </button>
+        <button
+          class="tab-btn"
+          role="tab"
+          aria-selected="false"
+          aria-controls="additional-panel"
+          id="additional-tab"
+        >
+          Additional Information
+        </button>
+        <button
+          class="tab-btn"
+          role="tab"
+          aria-selected="false"
+          aria-controls="reviews-panel"
+          id="reviews-tab"
+        >
+          Reviews
+        </button>
+      </div>
+
+      <div class="tabs-content">
+        <div
+          class="tab-panel tab-panel--active"
+          role="tabpanel"
+          aria-labelledby="description-tab"
+          id="description-panel"
+        >
+          <div class="tab-content">
+            <h3>Product Description</h3>
+            <p>
+              SilkSkin Serum is a revolutionary anti-aging treatment that
+              combines cutting-edge peptide technology with natural botanical
+              extracts. This luxurious serum is designed to target multiple
+              signs of aging, including fine lines, wrinkles, and loss of
+              firmness.
+            </p>
+
+            <h4>Key Benefits:</h4>
+            <ul>
+              <li>Reduces appearance of fine lines and wrinkles</li>
+              <li>Improves skin texture and smoothness</li>
+              <li>Boosts collagen production naturally</li>
+              <li>Provides deep hydration for 24 hours</li>
+              <li>Suitable for all skin types</li>
+            </ul>
+
+            <h4>How to Use:</h4>
+            <p>
+              Apply 2-3 drops to clean, dry skin morning and evening. Gently
+              massage into face and neck using upward motions. Follow with your
+              favorite moisturizer and sunscreen during the day.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="tab-panel"
+          role="tabpanel"
+          aria-labelledby="additional-tab"
+          id="additional-panel"
+        >
+          <div class="tab-content">
+            <h3>Additional Information</h3>
+            <table class="info-table">
+              <tbody>
+                <tr>
+                  <td>Brand</td>
+                  <td>BeautyShop</td>
+                </tr>
+                <tr>
+                  <td>Product Type</td>
+                  <td>Anti-aging Serum</td>
+                </tr>
+                <tr>
+                  <td>Skin Type</td>
+                  <td>All skin types</td>
+                </tr>
+                <tr>
+                  <td>Key Ingredients</td>
+                  <td>Peptides, Hyaluronic Acid, Vitamin C</td>
+                </tr>
+                <tr>
+                  <td>Volume Options</td>
+                  <td>30ml, 60ml, 80ml, 100ml</td>
+                </tr>
+                <tr>
+                  <td>Cruelty Free</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <td>Paraben Free</td>
+                  <td>Yes</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div
+          class="tab-panel"
+          role="tabpanel"
+          aria-labelledby="reviews-tab"
+          id="reviews-panel"
+        >
+          <div class="tab-content">
+            <div class="reviews-summary">
+              <div class="reviews-overview">
+                <div class="rating-large">
+                  <span class="rating-score-large">4.8</span>
+                  <div class="stars-large">
+                    <span class="star star--filled">★</span>
+                    <span class="star star--filled">★</span>
+                    <span class="star star--filled">★</span>
+                    <span class="star star--filled">★</span>
+                    <span class="star star--filled">★</span>
+                  </div>
+                  <span class="reviews-count">Based on 245 reviews</span>
+                </div>
+                <div class="rating-breakdown">
+                  <div class="rating-bar">
+                    <span class="rating-label">5 stars</span>
+                    <div class="bar-container">
+                      <div class="bar-fill" style="width: 75%"></div>
+                    </div>
+                    <span class="rating-percent">75%</span>
+                  </div>
+                  <div class="rating-bar">
+                    <span class="rating-label">4 stars</span>
+                    <div class="bar-container">
+                      <div class="bar-fill" style="width: 20%"></div>
+                    </div>
+                    <span class="rating-percent">20%</span>
+                  </div>
+                  <div class="rating-bar">
+                    <span class="rating-label">3 stars</span>
+                    <div class="bar-container">
+                      <div class="bar-fill" style="width: 3%"></div>
+                    </div>
+                    <span class="rating-percent">3%</span>
+                  </div>
+                  <div class="rating-bar">
+                    <span class="rating-label">2 stars</span>
+                    <div class="bar-container">
+                      <div class="bar-fill" style="width: 1%"></div>
+                    </div>
+                    <span class="rating-percent">1%</span>
+                  </div>
+                  <div class="rating-bar">
+                    <span class="rating-label">1 star</span>
+                    <div class="bar-container">
+                      <div class="bar-fill" style="width: 1%"></div>
+                    </div>
+                    <span class="rating-percent">1%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="reviews-controls">
+              <select class="select" id="reviews-sort">
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
+                <option value="highest">Highest Rating</option>
+                <option value="lowest">Lowest Rating</option>
+              </select>
+            </div>
+
+            <div class="reviews-list" id="reviews-list">
+              <!-- Reviews will be dynamically inserted here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<app-footer />

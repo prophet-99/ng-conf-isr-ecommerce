@@ -1,0 +1,195 @@
+<aside class="filters" id="filters-sidebar">
+  <div class="filters__header">
+    <h2 class="filters__title">Filtros</h2>
+    <button class="filters__clear" id="clear-filters">Limpiar todos</button>
+  </div>
+
+  <div class="filter-group">
+    <fieldset>
+      <legend class="filter-group__title">Categorías</legend>
+      <div class="checkbox-list">
+        <label class="checkbox-item">
+          <input type="checkbox" name="category" value="skin-care" />
+          <span class="checkbox-custom"></span>
+          Cuidado de la piel
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox" name="category" value="makeup" />
+          <span class="checkbox-custom"></span>
+          Maquillaje
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox" name="category" value="hair-care" />
+          <span class="checkbox-custom"></span>
+          Cuidado del cabello
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox" name="category" value="fragrances" />
+          <span class="checkbox-custom"></span>
+          Fragancias
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox" name="category" value="nail-care" />
+          <span class="checkbox-custom"></span>
+          Cuidado de uñas
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox" name="category" value="body-care" />
+          <span class="checkbox-custom"></span>
+          Cuidado corporal
+        </label>
+      </div>
+    </fieldset>
+  </div>
+
+  <!-- Skin Type -->
+  <div class="filter-group">
+    <fieldset>
+      <legend class="filter-group__title">Tipo de piel</legend>
+      <div class="checkbox-list">
+        <label class="checkbox-item">
+          <input type="checkbox" name="skin-type" value="normal" />
+          <span class="checkbox-custom"></span>
+          Normal
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox" name="skin-type" value="oily" />
+          <span class="checkbox-custom"></span>
+          Grasa
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox" name="skin-type" value="dry" />
+          <span class="checkbox-custom"></span>
+          Seca
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox" name="skin-type" value="combination" />
+          <span class="checkbox-custom"></span>
+          Mixta
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox" name="skin-type" value="sensitive" />
+          <span class="checkbox-custom"></span>
+          Sensible
+        </label>
+      </div>
+    </fieldset>
+  </div>
+
+  <!-- Price Range -->
+  <div class="filter-group">
+    <fieldset>
+      <legend class="filter-group__title">Rango de precio</legend>
+      <div class="price-slider">
+        <div class="price-inputs">
+          <input
+            type="range"
+            id="price-min"
+            min="0"
+            max="100"
+            value="0"
+            class="price-range"
+          />
+          <input
+            type="range"
+            id="price-max"
+            min="0"
+            max="100"
+            value="100"
+            class="price-range"
+          />
+        </div>
+        <div class="price-display">
+          <span id="price-display">{{ priceDisplay() }}</span>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <!-- Rating -->
+  <div class="filter-group">
+    <fieldset>
+      <legend class="filter-group__title">Calificación</legend>
+      <div class="checkbox-list">
+        <label class="checkbox-item">
+          <input type="checkbox" name="rating" value="5" />
+          <span class="checkbox-custom"></span>
+          <div class="stars">
+            <span class="star star--filled">★</span>
+            <span class="star star--filled">★</span>
+            <span class="star star--filled">★</span>
+            <span class="star star--filled">★</span>
+            <span class="star star--filled">★</span>
+          </div>
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox" name="rating" value="4" />
+          <span class="checkbox-custom"></span>
+          <div class="stars">
+            <span class="star star--filled">★</span>
+            <span class="star star--filled">★</span>
+            <span class="star star--filled">★</span>
+            <span class="star star--filled">★</span>
+            <span class="star">★</span>
+            <span class="rating-text">y más</span>
+          </div>
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox" name="rating" value="3" />
+          <span class="checkbox-custom"></span>
+          <div class="stars">
+            <span class="star star--filled">★</span>
+            <span class="star star--filled">★</span>
+            <span class="star star--filled">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="rating-text">y más</span>
+          </div>
+        </label>
+      </div>
+    </fieldset>
+  </div>
+
+  <!-- Promotions -->
+  <div class="filter-group">
+    <fieldset>
+      <legend class="filter-group__title">Promociones</legend>
+      <div class="checkbox-list">
+        <label class="checkbox-item">
+          <input type="checkbox" name="promotion" value="new" />
+          <span class="checkbox-custom"></span>
+          Nuevos ingresos
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox" name="promotion" value="bestseller" />
+          <span class="checkbox-custom"></span>
+          Más vendidos
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox" name="promotion" value="sale" />
+          <span class="checkbox-custom"></span>
+          En oferta
+        </label>
+      </div>
+    </fieldset>
+  </div>
+
+  <!-- Availability -->
+  <div class="filter-group">
+    <fieldset>
+      <legend class="filter-group__title">Disponibilidad</legend>
+      <div class="checkbox-list">
+        <label class="checkbox-item">
+          <input type="checkbox" name="availability" value="in-stock" />
+          <span class="checkbox-custom"></span>
+          En stock
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox" name="availability" value="out-of-stock" />
+          <span class="checkbox-custom"></span>
+          Agotado
+        </label>
+      </div>
+    </fieldset>
+  </div>
+</aside>

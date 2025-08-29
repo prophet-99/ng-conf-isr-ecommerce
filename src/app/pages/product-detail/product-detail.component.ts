@@ -1,11 +1,21 @@
 import { Component } from '@angular/core';
 
+import {
+  BreadcrumbComponent,
+  FooterComponent,
+  HeaderComponent,
+  PromotionalBarComponent,
+} from '@core/components';
+
+const IMPORTS = [
+  PromotionalBarComponent,
+  HeaderComponent,
+  BreadcrumbComponent,
+  FooterComponent,
+];
 @Component({
   selector: 'app-product-detail',
-  imports: [],
+  imports: [...IMPORTS],
   templateUrl: './product-detail.component.html',
-  styleUrl: './product-detail.component.scss'
 })
-export class ProductDetailComponent {
-
-}
+export class ProductDetailComponent {}

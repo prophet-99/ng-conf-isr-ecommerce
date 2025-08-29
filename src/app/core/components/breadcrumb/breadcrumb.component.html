@@ -1,0 +1,13 @@
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <div class="container">
+    <ol class="breadcrumbs__list">
+      @for(info of items(); track $index) { @if($last) {
+      <li class="breadcrumbs__current" aria-current="page">{{ info }}</li>
+      } @else {
+      <li>
+        <a href="#" class="breadcrumbs__link">{{ info }}</a>
+      </li>
+      } }
+    </ol>
+  </div>
+</nav>

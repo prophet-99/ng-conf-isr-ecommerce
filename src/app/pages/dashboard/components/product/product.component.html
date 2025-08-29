@@ -1,0 +1,73 @@
+@let productRef = product();
+
+<article class="product-card">
+  <div class="product-card__image-container">
+    <img
+      [src]="productRef.image"
+      [alt]="productRef.name"
+      class="product-card__image"
+    />
+    <div class="product-card__badge">{{ productRef.badge }}</div>
+    <div class="product-card__actions">
+      <button
+        class="product-card__action wishlist-btn"
+        aria-label="Add to wishlist"
+      >
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+          <path
+            d="M3.172 5.172a4 4 0 0 1 5.656 0L10 6.343l1.172-1.171a4 4 0 1 1 5.656 5.656L10 17.657l-6.828-6.829a4 4 0 0 1 0-5.656z"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+      <button
+        class="product-card__action quick-view-btn"
+        aria-label="Quick view"
+      >
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+          <path
+            d="M1 10s3-7 9-7 9 7 9 7-3 7-9 7-9-7-9-7z"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <circle
+            cx="10"
+            cy="10"
+            r="3"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="product-card__content">
+    <div class="product-card__category">
+      {{ productRef.category | categoryDisplay }}
+    </div>
+    <h3 class="product-card__title">
+      <a routerLink="/product/{{ productRef.id }}">{{ productRef.name }}</a>
+    </h3>
+    <div class="product-card__rating">
+      <div class="stars" [innerHTML]="productRef.rating | ratingStars"></div>
+      <span class="product-card__rating-score">{{ productRef.rating }}</span>
+    </div>
+    <div class="product-card__pricing">
+      <span class="product-card__price">{{
+        productRef.price | formatPrice
+      }}</span>
+      @if (productRef.oldPrice) {
+      <span class="product-card__price-old">{{
+        productRef.oldPrice | formatPrice
+      }}</span>
+      }
+    </div>
+  </div>
+</article>

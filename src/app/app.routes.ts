@@ -42,52 +42,37 @@ const pokemonResolver: ResolveFn<any> = (route, state) => {
 
 export const routes: Routes = [
   {
-    path: 'isr-one',
+    path: '',
     loadComponent: () =>
-      import('./components/isr-one/isr-one.component').then(
-        (m) => m.IsrOneComponent
+      import('./pages/dashboard/dashboard.component').then(
+        (m) => m.DashboardComponent
       ),
-    resolve: {
-      pokemons: pokemonResolver,
-    },
     data: {
       revalidate: 30,
     },
   },
   {
-    path: 'isr-two',
+    path: 'product/:slug',
     loadComponent: () =>
-      import('./components/isr-two/isr-two.component').then(
-        (m) => m.IsrTwoComponent
+      import('./pages/product-detail/product-detail.component').then(
+        (m) => m.ProductDetailComponent
       ),
+    data: {
+      revalidate: 30,
+    },
+  },
+  {
+    path: 'about',
+    loadComponent: () =>
+      import('./pages/about/about.component').then((m) => m.AboutComponent),
     data: {
       //* -> By setting the revalidate: 0, you can disable the scheduled (automatic) revalidation. The cache will never revalidate, unless you manually invalidate it using on-demand revalidation.
       revalidate: 0,
     },
   },
   {
-    path: 'ssr',
-    loadComponent: () =>
-      import('./components/ssr/ssr.component').then((m) => m.SsrComponent),
-  },
-  {
-    path: 'prerrender',
-    loadComponent: () =>
-      import('./components/prerrender/prerrender.component').then(
-        (m) => m.PrerrenderComponent
-      ),
-    data: {
-      revalidate: 15,
-    },
-  },
-  {
-    path: 'query-params',
-    loadComponent: () =>
-      import('./components/query-param/query-param.component').then(
-        (m) => m.QueryParamComponent
-      ),
-    data: {
-      revalidate: 30,
-    },
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full',
   },
 ];

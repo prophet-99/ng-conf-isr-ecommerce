@@ -1,46 +1,53 @@
 :root {
-  --bg-page: #f6f3ef;
-  --bg-surface: #ffffff;
-  --bg-muted: #f1ede6;
+  /* Base */
+  --bg-page: #f6f3ef; /* very light cream background */
+  --bg-surface: #ffffff; /* cards/containers */
+  --bg-muted: #f1ede6; /* soft blocks (thumbnails, tabs) */
 
-  --brand-900: #133a22;
-  --brand-800: #1b4628;
-  --brand-700: #225c33;
-  --brand-600: #2d6f3d;
-  --brand-500: #3b7f49;
-  --brand-100: #e9f5ec;
-  --brand-050: #f3fbf6;
+  /* Verdes de marca */
+  --brand-900: #133a22; /* very dark top header */
+  --brand-800: #1b4628; /* header/nav */
+  --brand-700: #225c33; /* main buttons and active chips */
+  --brand-600: #2d6f3d; /* button/link hover */
+  --brand-500: #3b7f49; /* highlights (pills, tags) */
+  --brand-100: #e9f5ec; /* soft backgrounds/labels */
+  --brand-050: #f3fbf6; /* very light badges */
 
-  --accent-amber: #e0a100;
-  --star-yellow: #f5b301;
-  --sale-badge: #1e7d40;
-  --danger: #d1433e;
-  --info: #0b79d0;
+  /* Accents y estado */
+  --accent-amber: #e0a100; /* current prices, subtle highlights */
+  --star-yellow: #f5b301; /* rating stars */
+  --sale-badge: #1e7d40; /* "% off" badge */
+  --danger: #d1433e; /* errors */
+  --info: #0b79d0; /* info links if needed */
 
-  --text-strong: #101828;
-  --text: #344054;
-  --text-muted: #667085;
-  --link: #2d6f3d;
+  /* Texto */
+  --text-strong: #101828; /* headings */
+  --text: #344054; /* body text */
+  --text-muted: #667085; /* meta, SKU, breadcrumbs */
+  --link: #2d6f3d; /* brand green links */
   --link-hover: #1c5532;
 
-  --line: #e5e7eb;
-  --chip: #d1e7d7;
+  /* Bordes y líneas */
+  --line: #e5e7eb; /* dividers/borders */
+  --chip: #d1e7d7; /* chip/inactive outlines */
 
-  --shadow-1: 0 2px 10px rgba(16, 24, 40, 0.05);
-  --shadow-2: 0 12px 24px rgba(16, 24, 40, 0.08);
-  --radius-xl: 16px;
-  --radius-lg: 12px;
-  --radius-md: 8px;
-  --radius-sm: 6px;
+  /* Sombras y radios */
+  --shadow-1: 0 2px 10px rgba(16, 24, 40, 0.05); /* light shadow */
+  --shadow-2: 0 12px 24px rgba(16, 24, 40, 0.08); /* strong shadow */
+  --radius-xl: 16px; /* extra large radius */
+  --radius-lg: 12px; /* large radius */
+  --radius-md: 8px; /* medium radius */
+  --radius-sm: 6px; /* small radius */
 
+  /* Tipografía y medidas */
   --font-head: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto,
-    sans-serif;
-  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --maxw: 1200px;
-  --gap: 24px;
+    sans-serif; /* heading font */
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; /* body font */
+  --maxw: 1200px; /* max width */
+  --gap: 24px; /* gap between elements */
 }
 
-/* Reset y base */
+/* Reset and base */
 * {
   margin: 0;
   padding: 0;
@@ -241,6 +248,11 @@ body {
 
 .breadcrumbs__link:hover {
   color: var(--link);
+}
+
+.breadcrumbs__link.is-active {
+  color: var(--text);
+  font-size: 14px;
 }
 
 .breadcrumbs__current {
@@ -1554,5 +1566,302 @@ select:focus {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* About Us page specific styles */
+
+/* About Hero Section */
+.about-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.about-hero__content {
+  padding-right: 24px;
+}
+
+.about-hero__title {
+  font-family: var(--font-head);
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--text-strong);
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.about-hero__subtitle {
+  font-size: 20px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.about-hero__image {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-2);
+}
+
+.about-hero__img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+/* Mission & Vision */
+.mission-vision {
+  margin-bottom: 80px;
+}
+
+.mission-vision__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.mission-card {
+  background-color: var(--bg-surface);
+  padding: 40px;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-1);
+  text-align: center;
+}
+
+.mission-card__icon {
+  color: var(--brand-700);
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.mission-card__title {
+  font-family: var(--font-head);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-strong);
+  margin-bottom: 20px;
+}
+
+.mission-card__text {
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* Values Section */
+.values {
+  margin-bottom: 80px;
+}
+
+.values__title {
+  font-family: var(--font-head);
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--text-strong);
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.values__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.value-card {
+  background-color: var(--bg-surface);
+  padding: 32px 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2);
+}
+
+.value-card__icon {
+  color: var(--brand-700);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.value-card__title {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-strong);
+  margin-bottom: 16px;
+}
+
+.value-card__text {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Story Section */
+.story {
+  margin-bottom: 80px;
+}
+
+.story__content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.story__title {
+  font-family: var(--font-head);
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--text-strong);
+  margin-bottom: 32px;
+}
+
+.story__paragraph {
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.story__paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.story__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.stat-card {
+  background-color: var(--bg-surface);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-1);
+  text-align: center;
+}
+
+.stat-card__number {
+  font-family: var(--font-head);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--brand-700);
+  margin-bottom: 8px;
+}
+
+.stat-card__label {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Team Section */
+.team {
+  margin-bottom: 80px;
+}
+
+.team__title {
+  font-family: var(--font-head);
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--text-strong);
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.team__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+.team-card {
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2);
+}
+
+.team-card__image {
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.team-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-card__content {
+  padding: 24px;
+  text-align: center;
+}
+
+.team-card__name {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-strong);
+  margin-bottom: 8px;
+}
+
+.team-card__role {
+  font-size: 14px;
+  color: var(--brand-700);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.team-card__bio {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Responsive Design for About Page */
+@media (max-width: 768px) {
+  .about-hero {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+
+  .about-hero__title {
+    font-size: 36px;
+  }
+
+  .mission-vision__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .story__content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .story__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .team__grid {
+    grid-template-columns: 1fr;
   }
 }
