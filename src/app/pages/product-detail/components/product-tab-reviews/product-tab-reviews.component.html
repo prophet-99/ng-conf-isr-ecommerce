@@ -1,0 +1,101 @@
+<div class="reviews-summary">
+  <div class="reviews-overview">
+    <div class="rating-large">
+      <span class="rating-score-large">4.8</span>
+      <div class="stars-large">
+        <span class="star star--filled">★</span>
+        <span class="star star--filled">★</span>
+        <span class="star star--filled">★</span>
+        <span class="star star--filled">★</span>
+        <span class="star star--filled">★</span>
+      </div>
+      <span class="reviews-count">Based on 245 reviews</span>
+    </div>
+    <div class="rating-breakdown">
+      <div class="rating-bar">
+        <span class="rating-label">5 stars</span>
+        <div class="bar-container">
+          <div class="bar-fill" style="width: 75%"></div>
+        </div>
+        <span class="rating-percent">75%</span>
+      </div>
+      <div class="rating-bar">
+        <span class="rating-label">4 stars</span>
+        <div class="bar-container">
+          <div class="bar-fill" style="width: 20%"></div>
+        </div>
+        <span class="rating-percent">20%</span>
+      </div>
+      <div class="rating-bar">
+        <span class="rating-label">3 stars</span>
+        <div class="bar-container">
+          <div class="bar-fill" style="width: 3%"></div>
+        </div>
+        <span class="rating-percent">3%</span>
+      </div>
+      <div class="rating-bar">
+        <span class="rating-label">2 stars</span>
+        <div class="bar-container">
+          <div class="bar-fill" style="width: 1%"></div>
+        </div>
+        <span class="rating-percent">1%</span>
+      </div>
+      <div class="rating-bar">
+        <span class="rating-label">1 star</span>
+        <div class="bar-container">
+          <div class="bar-fill" style="width: 1%"></div>
+        </div>
+        <span class="rating-percent">1%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="reviews-controls">
+  <select class="select" id="reviews-sort">
+    <option value="newest">Newest</option>
+    <option value="oldest">Oldest</option>
+    <option value="highest">Highest Rating</option>
+    <option value="lowest">Lowest Rating</option>
+  </select>
+</div>
+
+<div class="reviews-list" id="reviews-list">
+  @for (review of reviews(); track $index) {
+  <div class="review-card">
+    <div class="review-header">
+      <div class="reviewer-info">
+        <span class="review-avatar">{{
+          review.author.slice(0, 1) + review.author.slice(-1)
+        }}</span>
+        <span class="reviewer-name">{{ review.author }}</span>
+        @if (review.verified) {
+        <span class="review-verified" title="Verified purchase"
+          >✔️ Verificado</span
+        >
+        }
+        <span class="review-date">{{ review.date }}</span>
+      </div>
+      <div class="review-rating">
+        <div class="stars">
+          @for (i of [0,1,2,3,4]; track trackByIndex(i)) {
+          <span class="star" [class.star--filled]="i < review.rating">★</span>
+          }
+        </div>
+        <span class="rating-score">{{ review.rating }}</span>
+      </div>
+    </div>
+    <div class="review-body">
+      <div class="review-title">{{ review.title }}</div>
+      <p class="review-comment">{{ review.text }}</p>
+      @if (review.images?.length) {
+      <div class="review-images">
+        @for(img of review.images; track trackByValue(img)) {
+        <img [src]="img" alt="Imagen de reseña" class="review-image" />
+        }
+      </div>
+      }
+    </div>
+  </div>
+  }
+</div>

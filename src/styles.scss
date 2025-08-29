@@ -1245,11 +1245,18 @@ body {
   box-shadow: var(--shadow-1);
 }
 
+.reviewer-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .review-header {
   display: flex;
   align-items: center;
   gap: 16px;
   margin-bottom: 16px;
+  justify-content: space-between;
 }
 
 .review-avatar {
@@ -1323,6 +1330,11 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.review-rating {
+  display: flex;
+  gap: 0.5rem;
 }
 
 /* Footer */

@@ -1,4 +1,4 @@
-interface FilterState {
+export interface FilterState {
   categories: string[];
   skinTypes: string[];
   priceMin: number;

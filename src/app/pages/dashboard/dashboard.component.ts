@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 
+import { MainLayoutComponent } from '@core/layouts';
 import {
   PromotionalBarComponent,
   HeaderComponent,
@@ -15,6 +16,7 @@ import {
 } from '@pages/dashboard/components';
 
 const IMPORTS = [
+  MainLayoutComponent,
   PromotionalBarComponent,
   HeaderComponent,
   BreadcrumbComponent,

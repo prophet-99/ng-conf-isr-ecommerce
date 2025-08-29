@@ -4,27 +4,25 @@
 
 <app-breadcrumb [items]="['Inicio', 'Tienda']" />
 
-<main class="main">
-  <div class="container">
-    <div class="shop-layout">
-      <app-product-filters />
+<app-main-layout>
+  <div class="shop-layout">
+    <app-product-filters />
 
-      <section class="products-section">
-        <app-sort-controls />
+    <section class="products-section">
+      <app-sort-controls />
 
-        <article class="products-grid" id="products-grid">
-          @for (product of products(); track $index) {
-          <app-product [product]="product" />
-          }
-        </article>
+      <article class="products-grid" id="products-grid">
+        @for (product of products(); track $index) {
+        <app-product [product]="product" />
+        }
+      </article>
 
-        <nav class="pagination" aria-label="Products pagination">
-          <ul class="pagination__list" id="pagination"></ul>
-        </nav>
-      </section>
-    </div>
+      <nav class="pagination" aria-label="Products pagination">
+        <ul class="pagination__list" id="pagination"></ul>
+      </nav>
+    </section>
   </div>
-</main>
+</app-main-layout>
 
 <app-footer />
 
