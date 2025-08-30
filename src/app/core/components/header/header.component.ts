@@ -1,11 +1,14 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, inject, PLATFORM_ID, signal } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { CartManager } from '@core/symbols/classes';
 
+const NG_IMPORTS = [RouterLink, RouterLinkActive];
+
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [...NG_IMPORTS],
   templateUrl: './header.component.html',
   styles: ``,
 })

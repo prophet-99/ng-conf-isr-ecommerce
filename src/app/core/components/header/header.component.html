@@ -30,9 +30,24 @@
     <nav class="header__nav" aria-label="Main navigation">
       <ul class="nav-list">
         <li>
-          <a href="index.html" class="nav-link nav-link--active">Inicio</a>
+          <a
+            class="nav-link"
+            routerLinkActive="nav-link--active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLink="/"
+          >
+            Inicio
+          </a>
         </li>
-        <li><a href="about.html" class="nav-link">Sobre nosotros</a></li>
+        <li>
+          <a
+            class="nav-link"
+            routerLinkActive="nav-link--active"
+            routerLink="/about"
+          >
+            Sobre nosotros
+          </a>
+        </li>
       </ul>
     </nav>
 
