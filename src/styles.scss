@@ -1615,11 +1615,12 @@ select:focus {
   border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: var(--shadow-2);
+  height: 400px;
 }
 
 .about-hero__img {
   width: 100%;
-  height: 400px;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -1819,6 +1820,7 @@ select:focus {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top;
 }
 
 .team-card__content {

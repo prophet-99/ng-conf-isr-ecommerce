@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
 
+import { type FilterState } from '@core/models';
+
 const INITIAL_STATE: FilterState = {
   categories: [],
   skinTypes: [],
