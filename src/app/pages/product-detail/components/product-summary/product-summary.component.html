@@ -1,11 +1,13 @@
+@let product = productDetail();
+
 <div class="product-layout">
   <app-product-summary-gallery />
 
   <!-- PRODUCT INFO -->
   <div class="product-info">
     <div class="product-header">
-      <span class="product-category">Skin Care</span>
-      <h1 class="product-title">SilkSkin Serum</h1>
+      <span class="product-category">{{ product.category }}</span>
+      <h1 class="product-title">{{ product.name }}</h1>
       <div class="product-rating">
         <div class="stars">
           <span class="star star--filled">★</span>
@@ -14,36 +16,39 @@
           <span class="star star--filled">★</span>
           <span class="star star--filled">★</span>
         </div>
-        <span class="rating-score">4.8</span>
-        <span class="rating-count">(245 reviews)</span>
+        <span class="rating-score">{{ product.rating }}</span>
+        <span class="rating-count">
+          ({{ product.detail.reviews.totalReviews }} reseñas)
+        </span>
       </div>
     </div>
 
     <div class="product-pricing">
-      <span class="price-current">$48.00</span>
-      <span class="price-old">$60.00</span>
+      <span class="price-current">{{ product.price | currency }}</span>
+      @if (product.oldPrice) {
+      <span class="price-old">{{ product.oldPrice | currency }}</span>
+      }
     </div>
 
     <p class="product-description">
-      A luxurious anti-aging serum that combines powerful peptides with natural
-      botanicals to restore skin's youthful radiance. Clinically proven to
-      reduce fine lines and improve skin texture.
+      {{ product.description }}
     </p>
 
-    <!-- Size Selection -->
+    <!-- SIZE SELECTION -->
+    @if(product.sizes) {
     <div class="product-options">
       <div class="option-group">
         <label class="option-label">Size/Volume</label>
         <div class="size-pills" id="size-options">
-          <button class="size-pill" data-size="30ml">30 ml</button>
-          <button class="size-pill size-pill--selected" data-size="60ml">
-            60 ml
+          @for(size of product.sizes; track size){
+          <button class="size-pill" [attr.data-size]="size">
+            {{ size }}
           </button>
-          <button class="size-pill" data-size="80ml">80 ml</button>
-          <button class="size-pill" data-size="100ml">100 ml</button>
+          }
         </div>
       </div>
     </div>
+    }
 
     <!-- PURCHASE CONTROLS -->
     <app-product-summary-controls />
@@ -52,14 +57,14 @@
     <div class="product-meta">
       <div class="meta-item">
         <span class="meta-label">SKU:</span>
-        <span class="meta-value">SS-001-60ML</span>
+        <span class="meta-value">{{ product.sku }}</span>
       </div>
       <div class="meta-item">
         <span class="meta-label">Tags:</span>
         <div class="tag-list">
-          <span class="tag">Anti-aging</span>
-          <span class="tag">Peptides</span>
-          <span class="tag">Hydrating</span>
+          @for(tag of product.tags; track tag) {
+          <span class="tag">{{ tag }}</span>
+          }
         </div>
       </div>
       <div class="meta-item">

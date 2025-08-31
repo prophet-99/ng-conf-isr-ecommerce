@@ -1,3 +1,5 @@
+@let productsRef = products();
+
 <app-promotional-bar />
 
 <app-header />
@@ -11,11 +13,15 @@
     <section class="products-section">
       <app-sort-controls />
 
+      @if(productsRef.length > 0) {
       <article class="products-grid" id="products-grid">
         @for (product of products(); track $index) {
         <app-product [product]="product" />
         }
       </article>
+      } @else {
+      <app-loader />
+      }
 
       <nav class="pagination" aria-label="Products pagination">
         <ul class="pagination__list" id="pagination"></ul>

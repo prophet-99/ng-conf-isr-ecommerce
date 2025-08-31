@@ -3,11 +3,13 @@
 <article class="product-card">
   <div class="product-card__image-container">
     <img
-      [src]="productRef.image"
+      [src]="productRef.image | getResource"
       [alt]="productRef.name"
       class="product-card__image"
     />
+    @if (productRef?.badge) {
     <div class="product-card__badge">{{ productRef.badge }}</div>
+    }
     <div class="product-card__actions">
       <button
         class="product-card__action wishlist-btn"

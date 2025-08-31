@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 import { MainLayoutComponent } from '@core/layouts';
 import {
@@ -7,13 +8,15 @@ import {
   BreadcrumbComponent,
   FooterComponent,
 } from '@core/components';
-import { type Product } from '@core/models';
+import { ProductService } from '@core/services';
+import { LoaderComponent } from '@shared/components';
 import {
   FilterButtonComponent,
   ProductComponent,
   ProductFiltersComponent,
   SortControlsComponent,
 } from '@pages/dashboard/components';
+import { map } from 'rxjs';
 
 const IMPORTS = [
   MainLayoutComponent,
@@ -25,6 +28,7 @@ const IMPORTS = [
   SortControlsComponent,
   ProductComponent,
   FilterButtonComponent,
+  LoaderComponent,
 ];
 
 @Component({
@@ -33,5 +37,12 @@ const IMPORTS = [
   templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent {
-  products = signal<Product[]>([]);
+  // DI
+  private readonly productService = inject(ProductService);
+
+  // LOCAL
+  products = toSignal(
+    this.productService.getProducts().pipe(map(({ products }) => products)),
+    { initialValue: [] }
+  );
 }

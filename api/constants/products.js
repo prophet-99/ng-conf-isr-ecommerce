@@ -31,7 +31,7 @@ export const PRODUCTS = [
     id: 'smooth-foundation',
     name: 'Base Suave',
     price: 28.0,
-    image: 'resources/base-suave/birgith-roosipuu-Pd5JqHgT2Fs-unsplash.jpg.jpg',
+    image: 'resources/base-suave/birgith-roosipuu-Pd5JqHgT2Fs-unsplash.jpg',
     rating: 4.4,
     category: 'makeup',
     inStock: true,

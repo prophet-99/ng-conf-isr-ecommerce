@@ -2,6 +2,7 @@ import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { type Product } from '@core/models';
+import { GetResourcePipe } from '@shared/pipes';
 import {
   CategoryDisplayPipe,
   FormatPricePipe,
@@ -9,7 +10,12 @@ import {
 } from '@pages/dashboard/pipes';
 
 const NG_IMPORTS = [RouterLink];
-const IMPORTS = [CategoryDisplayPipe, RatingStarsPipe, FormatPricePipe];
+const IMPORTS = [
+  CategoryDisplayPipe,
+  RatingStarsPipe,
+  FormatPricePipe,
+  GetResourcePipe,
+];
 
 @Component({
   selector: 'app-product',

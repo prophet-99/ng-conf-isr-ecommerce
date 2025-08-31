@@ -1879,3 +1879,12 @@ select:focus {
     grid-template-columns: 1fr;
   }
 }
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    max-width: 6.25rem;
+  }
+}

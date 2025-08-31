@@ -1,9 +1,14 @@
-<div class="product-gallery">
+@let product = productDetail();
+
+<div class="product-gallery" tabindex="0" aria-label="Galería de imágenes">
+  <!-- MAIN IMAGE -->
   <div class="gallery-main">
     <button
       class="gallery-nav gallery-nav--prev"
-      id="gallery-prev"
-      aria-label="Previous image"
+      type="button"
+      aria-label="Imagen anterior"
+      (click)="prev()"
+      [disabled]="currentIndex() === 0 || images().length === 0"
     >
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
         <path
@@ -15,16 +20,33 @@
         />
       </svg>
     </button>
+
+    @if(images().length === 0) {
+    <div class="gallery-main__placeholder">
+      <img
+        src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=500&q=60"
+        alt="Sin imagen disponible"
+        width="500"
+        height="500"
+        loading="lazy"
+      />
+    </div>
+    } @else {
     <img
-      id="main-image"
-      src="/placeholder.svg?height=500&width=500"
-      alt="SilkSkin Serum"
       class="gallery-main__image"
+      [src]="mainImage() | getResource"
+      [alt]="product.name + ' - imagen ' + (currentIndex() + 1)"
     />
+    }
+
     <button
       class="gallery-nav gallery-nav--next"
-      id="gallery-next"
-      aria-label="Next image"
+      type="button"
+      aria-label="Imagen siguiente"
+      (click)="next()"
+      [disabled]="
+        currentIndex() === images().length - 1 || images().length === 0
+      "
     >
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
         <path
@@ -37,42 +59,33 @@
       </svg>
     </button>
   </div>
-  <div class="gallery-thumbnails" id="gallery-thumbnails">
+
+  <!-- THUMBNAILS -->
+  <div class="gallery-thumbnails" role="list">
+    @for(img of images(); track img; let i = $index) {
     <button
-      class="thumbnail thumbnail--active"
-      data-image="/placeholder.svg?height=500&width=500"
-    >
-      <img
-        src="/placeholder.svg?height=80&width=80"
-        alt="SilkSkin Serum - Main view"
-      />
-    </button>
-    <button
+      type="button"
       class="thumbnail"
-      data-image="/placeholder.svg?height=500&width=500"
+      [class.thumbnail--active]="i === currentIndex()"
+      (click)="setIndex(i)"
+      [attr.aria-label]="'Ver imagen ' + (i + 1)"
+      role="listitem"
     >
       <img
-        src="/placeholder.svg?height=80&width=80"
-        alt="SilkSkin Serum - Ingredients"
+        [src]="img | getResource"
+        [alt]="product.name + ' miniatura ' + (i + 1)"
+        width="80"
+        height="80"
+        loading="lazy"
       />
     </button>
-    <button
-      class="thumbnail"
-      data-image="/placeholder.svg?height=500&width=500"
-    >
-      <img
-        src="/placeholder.svg?height=80&width=80"
-        alt="SilkSkin Serum - Texture"
-      />
-    </button>
-    <button
-      class="thumbnail"
-      data-image="/placeholder.svg?height=500&width=500"
-    >
-      <img
-        src="/placeholder.svg?height=80&width=80"
-        alt="SilkSkin Serum - Packaging"
-      />
-    </button>
+    }
+  </div>
+
+  <!-- INDICATOR -->
+  <div class="gallery-indicator" aria-live="polite">
+    @if(images().length > 0){
+    {{ currentIndex() + 1 }} / {{ images().length }}
+    }
   </div>
 </div>
