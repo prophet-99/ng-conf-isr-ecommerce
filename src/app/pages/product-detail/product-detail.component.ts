@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { BehaviorSubject } from 'rxjs';
 
+import { LoaderEvent } from '@core/events';
 import { MainLayoutComponent } from '@core/layouts';
 import {
   BreadcrumbComponent,
@@ -32,10 +33,11 @@ const IMPORTS = [
   providers: [ProductDetailState],
   templateUrl: './product-detail.component.html',
 })
-export class ProductDetailComponent {
+export class ProductDetailComponent implements OnInit {
   // DI
   private readonly activatedRoute = inject(ActivatedRoute);
   private readonly productDetailState = inject(ProductDetailState);
+  private readonly loaderEvent = inject(LoaderEvent);
 
   constructor() {
     const routeDataSubject = this.activatedRoute
@@ -43,5 +45,9 @@ export class ProductDetailComponent {
     const { productDetail } = routeDataSubject.getValue();
 
     this.productDetailState.setProductDetail(productDetail);
+  }
+
+  ngOnInit(): void {
+    this.loaderEvent.hide();
   }
 }

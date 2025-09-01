@@ -1,3 +1,6 @@
 <main>
   <router-outlet />
+  @if(loaderEvent.isLoading$ | async ) {
+  <app-loader [isFull]="true" height="100vh" />
+  }
 </main>

@@ -1,21 +1,16 @@
-<h3>Product Description</h3>
+@let description = productDetail().detail.description;
+
+<h3>Descripción del Producto</h3>
 <p>
-  SilkSkin Serum is a revolutionary anti-aging treatment that combines
-  cutting-edge peptide technology with natural botanical extracts. This
-  luxurious serum is designed to target multiple signs of aging, including fine
-  lines, wrinkles, and loss of firmness.
+  {{ description.product }}
 </p>
-<h4>Key Benefits:</h4>
+<h4>Beneficios Clave:</h4>
 <ul>
-  <li>Reduces appearance of fine lines and wrinkles</li>
-  <li>Improves skin texture and smoothness</li>
-  <li>Boosts collagen production naturally</li>
-  <li>Provides deep hydration for 24 hours</li>
-  <li>Suitable for all skin types</li>
+  @for(benefit of description.benefits; track trackByIndex($index)) {
+  <li>{{ benefit }}</li>
+  }
 </ul>
-<h4>How to Use:</h4>
+<h4>Cómo Usar:</h4>
 <p>
-  Apply 2-3 drops to clean, dry skin morning and evening. Gently massage into
-  face and neck using upward motions. Follow with your favorite moisturizer and
-  sunscreen during the day.
+  {{ description.howToUse }}
 </p>

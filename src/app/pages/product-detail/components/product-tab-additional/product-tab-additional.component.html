@@ -1,33 +1,35 @@
-<h3>Additional Information</h3>
+@let info = productDetail().detail.additionalInfo;
+
+<h3>Información Adicional</h3>
 <table class="info-table">
   <tbody>
     <tr>
-      <td>Brand</td>
-      <td>BeautyShop</td>
+      <td>Marca</td>
+      <td>{{ info.brand }}</td>
     </tr>
     <tr>
-      <td>Product Type</td>
-      <td>Anti-aging Serum</td>
+      <td>Tipo de Producto</td>
+      <td>{{ info.productType }}</td>
     </tr>
     <tr>
-      <td>Skin Type</td>
-      <td>All skin types</td>
+      <td>Tipo de Piel</td>
+      <td>{{ info.skinType }}</td>
     </tr>
     <tr>
-      <td>Key Ingredients</td>
-      <td>Peptides, Hyaluronic Acid, Vitamin C</td>
+      <td>Ingredientes Clave</td>
+      <td>{{ info.keyIngredients }}</td>
     </tr>
     <tr>
-      <td>Volume Options</td>
-      <td>30ml, 60ml, 80ml, 100ml</td>
+      <td>Opciones de Volumen</td>
+      <td>{{ info.volumeOptions }}</td>
     </tr>
     <tr>
-      <td>Cruelty Free</td>
-      <td>Yes</td>
+      <td>Libre de Crueldad</td>
+      <td>{{ info.crueltyFree ? 'Sí' : 'No' }}</td>
     </tr>
     <tr>
-      <td>Paraben Free</td>
-      <td>Yes</td>
+      <td>Libre de Parabenos</td>
+      <td>{{ info.parabenFree ? 'Sí' : 'No' }}</td>
     </tr>
   </tbody>
 </table>

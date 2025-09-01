@@ -1,7 +1,9 @@
+@let reviews = productDetail().detail.reviews;
+
 <div class="reviews-summary">
   <div class="reviews-overview">
     <div class="rating-large">
-      <span class="rating-score-large">4.8</span>
+      <span class="rating-score-large">{{ reviews.rating }}</span>
       <div class="stars-large">
         <span class="star star--filled">★</span>
         <span class="star star--filled">★</span>
@@ -9,43 +11,93 @@
         <span class="star star--filled">★</span>
         <span class="star star--filled">★</span>
       </div>
-      <span class="reviews-count">Based on 245 reviews</span>
+      <span class="reviews-count"
+        >Basado en {{ reviews.totalReviews }} reseñas</span
+      >
     </div>
     <div class="rating-breakdown">
       <div class="rating-bar">
-        <span class="rating-label">5 stars</span>
+        <span class="rating-label">{{ reviews.stars.one }} stars</span>
         <div class="bar-container">
-          <div class="bar-fill" style="width: 75%"></div>
+          <div
+            class="bar-fill"
+            [style.width]="
+              (reviews.stars.one / reviews.totalReviews) * 100 + '%'
+            "
+          ></div>
         </div>
-        <span class="rating-percent">75%</span>
+        <span class="rating-percent"
+          >{{
+            (reviews.stars.one / reviews.totalReviews) * 100 | number : '1.0-2'
+          }}%
+        </span>
       </div>
       <div class="rating-bar">
-        <span class="rating-label">4 stars</span>
+        <span class="rating-label">{{ reviews.stars.two }} stars</span>
         <div class="bar-container">
-          <div class="bar-fill" style="width: 20%"></div>
+          <div
+            class="bar-fill"
+            [style.width]="
+              (reviews.stars.two / reviews.totalReviews) * 100 + '%'
+            "
+          ></div>
         </div>
-        <span class="rating-percent">20%</span>
+        <span class="rating-percent">
+          {{
+            (reviews.stars.two / reviews.totalReviews) * 100 | number : '1.0-2'
+          }}%
+        </span>
       </div>
       <div class="rating-bar">
-        <span class="rating-label">3 stars</span>
+        <span class="rating-label">{{ reviews.stars.three }} stars</span>
         <div class="bar-container">
-          <div class="bar-fill" style="width: 3%"></div>
+          <div
+            class="bar-fill"
+            [style.width]="
+              (reviews.stars.three / reviews.totalReviews) * 100 + '%'
+            "
+          ></div>
         </div>
-        <span class="rating-percent">3%</span>
+        <span class="rating-percent">
+          {{
+            (reviews.stars.three / reviews.totalReviews) * 100
+              | number : '1.0-2'
+          }}%
+        </span>
       </div>
       <div class="rating-bar">
-        <span class="rating-label">2 stars</span>
+        <span class="rating-label">{{ reviews.stars.four }} stars</span>
         <div class="bar-container">
-          <div class="bar-fill" style="width: 1%"></div>
+          <div
+            class="bar-fill"
+            [style.width]="
+              (reviews.stars.four / reviews.totalReviews) * 100 + '%'
+            "
+          ></div>
         </div>
-        <span class="rating-percent">1%</span>
+        <span class="rating-percent">
+          {{
+            (reviews.stars.four / reviews.totalReviews) * 100
+              | number : '1.0-2'
+          }}%
+        </span>
       </div>
       <div class="rating-bar">
-        <span class="rating-label">1 star</span>
+        <span class="rating-label">{{ reviews.stars.five }} stars</span>
         <div class="bar-container">
-          <div class="bar-fill" style="width: 1%"></div>
+          <div
+            class="bar-fill"
+            [style.width]="
+              (reviews.stars.five / reviews.totalReviews) * 100 + '%'
+            "
+          ></div>
         </div>
-        <span class="rating-percent">1%</span>
+        <span class="rating-percent">
+          {{
+            (reviews.stars.five / reviews.totalReviews) * 100
+              | number : '1.0-2'
+          }}%
+        </span>
       </div>
     </div>
   </div>
@@ -53,45 +105,49 @@
 
 <div class="reviews-controls">
   <select class="select" id="reviews-sort">
-    <option value="newest">Newest</option>
-    <option value="oldest">Oldest</option>
-    <option value="highest">Highest Rating</option>
-    <option value="lowest">Lowest Rating</option>
+    <option value="newest">Más recientes</option>
+    <option value="oldest">Más antiguas</option>
+    <option value="highest">Mejor calificación</option>
+    <option value="lowest">Peor calificación</option>
   </select>
 </div>
 
 <div class="reviews-list" id="reviews-list">
-  @for (review of reviews(); track $index) {
+  @for (comment of reviews.comments; track $index) {
   <div class="review-card">
     <div class="review-header">
       <div class="reviewer-info">
         <span class="review-avatar">{{
-          review.author.slice(0, 1) + review.author.slice(-1)
+          comment.author.slice(0, 1) + comment.author.slice(-1)
         }}</span>
-        <span class="reviewer-name">{{ review.author }}</span>
-        @if (review.verified) {
+        <span class="reviewer-name">{{ comment.author }}</span>
+        @if (comment.isVerified) {
         <span class="review-verified" title="Verified purchase"
           >✔️ Verificado</span
         >
         }
-        <span class="review-date">{{ review.date }}</span>
+        <span class="review-date">{{ comment.date }}</span>
       </div>
       <div class="review-rating">
         <div class="stars">
           @for (i of [0,1,2,3,4]; track trackByIndex(i)) {
-          <span class="star" [class.star--filled]="i < review.rating">★</span>
+          <span class="star" [class.star--filled]="i < comment.rating">★</span>
           }
         </div>
-        <span class="rating-score">{{ review.rating }}</span>
+        <span class="rating-score">{{ comment.rating }}</span>
       </div>
     </div>
     <div class="review-body">
-      <div class="review-title">{{ review.title }}</div>
-      <p class="review-comment">{{ review.text }}</p>
-      @if (review.images?.length) {
+      <div class="review-title">{{ comment.title }}</div>
+      <p class="review-comment">{{ comment.description }}</p>
+      @if (comment.images.length) {
       <div class="review-images">
-        @for(img of review.images; track trackByValue(img)) {
-        <img [src]="img" alt="Imagen de reseña" class="review-image" />
+        @for(img of comment.images; track trackByValue(img)) {
+        <img
+          [src]="img | getResource"
+          alt="Imagen de reseña"
+          class="review-image"
+        />
         }
       </div>
       }

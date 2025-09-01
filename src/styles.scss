@@ -1316,6 +1316,7 @@ body {
 .review-images {
   display: flex;
   gap: 8px;
+  margin-block-start: 0.5rem;
 }
 
 .review-image {
@@ -1884,7 +1885,28 @@ select:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+
   svg {
     max-width: 6.25rem;
+  }
+
+  &.is-full {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2000;
+
+    svg {
+      z-index: 1;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
   }
 }

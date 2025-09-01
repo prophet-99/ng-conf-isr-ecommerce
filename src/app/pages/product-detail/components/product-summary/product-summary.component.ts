@@ -3,7 +3,6 @@ import { CurrencyPipe } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 import { type ProductDetailResponse } from '@core/models';
-
 import { ProductDetailState } from '@pages/product-detail/product-detail.state';
 import { ProductSummaryGalleryComponent } from '../product-summary-gallery/product-summary-gallery.component';
 import { ProductSummaryControlsComponent } from '../product-summary-controls/product-summary-controls.component';

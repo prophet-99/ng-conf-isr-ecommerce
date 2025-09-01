@@ -1,4 +1,8 @@
-<section class="loader" [style]="{ height: height() }">
+<section
+  class="loader"
+  [class.is-full]="isFull()"
+  [style]="{ height: height() }"
+>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150">
     <path
       fill="none"

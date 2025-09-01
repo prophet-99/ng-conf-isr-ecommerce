@@ -9,7 +9,7 @@
       id="description-tab"
       (click)="setTab('description')"
     >
-      Description
+      Descripción
     </button>
     <button
       class="tab-btn"
@@ -20,7 +20,7 @@
       id="additional-tab"
       (click)="setTab('additional')"
     >
-      Additional Information
+      Información adicional
     </button>
     <button
       class="tab-btn"
@@ -31,46 +31,47 @@
       id="reviews-tab"
       (click)="setTab('reviews')"
     >
-      Reviews
+      Reseñas
     </button>
   </div>
 
   <div class="tabs-content">
+    @if (activeTab() === 'description') {
     <div
       class="tab-panel"
       [class.tab-panel--active]="activeTab() === 'description'"
       role="tabpanel"
       aria-labelledby="description-tab"
       id="description-panel"
-      *ngIf="activeTab() === 'description'"
     >
       <div class="tab-content">
         <app-product-tab-description />
       </div>
     </div>
+    } @if (activeTab() === 'additional') {
     <div
       class="tab-panel"
       [class.tab-panel--active]="activeTab() === 'additional'"
       role="tabpanel"
       aria-labelledby="additional-tab"
       id="additional-panel"
-      *ngIf="activeTab() === 'additional'"
     >
       <div class="tab-content">
         <app-product-tab-additional />
       </div>
     </div>
-  </div>
-  <div
-    class="tab-panel"
-    [class.tab-panel--active]="activeTab() === 'reviews'"
-    role="tabpanel"
-    aria-labelledby="reviews-tab"
-    id="reviews-panel"
-    *ngIf="activeTab() === 'reviews'"
-  >
-    <div class="tab-content">
-      <app-product-tab-reviews [reviews]="productReviews" />
+    } @if (activeTab() === 'reviews') {
+    <div
+      class="tab-panel"
+      [class.tab-panel--active]="activeTab() === 'reviews'"
+      role="tabpanel"
+      aria-labelledby="reviews-tab"
+      id="reviews-panel"
+    >
+      <div class="tab-content">
+        <app-product-tab-reviews />
+      </div>
     </div>
+    }
   </div>
 </div>

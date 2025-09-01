@@ -55,7 +55,9 @@
       {{ productRef.category | categoryDisplay }}
     </div>
     <h3 class="product-card__title">
-      <a routerLink="/product/{{ productRef.id }}">{{ productRef.name }}</a>
+      <a href="#" (click)="redirectToDetail(productRef.id, $event)">{{
+        productRef.name
+      }}</a>
     </h3>
     <div class="product-card__rating">
       <div class="stars" [innerHTML]="productRef.rating | ratingStars"></div>

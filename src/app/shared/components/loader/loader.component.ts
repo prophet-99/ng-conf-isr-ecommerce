@@ -7,5 +7,6 @@ import { Component, input } from '@angular/core';
   styles: ``,
 })
 export class LoaderComponent {
+  isFull = input<boolean>(false);
   height = input<string>('60vh');
 }
