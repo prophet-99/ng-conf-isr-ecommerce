@@ -5,12 +5,17 @@ import { productDetailResolver } from '@core/resolvers';
 export const routes: Routes = [
   {
     path: '',
+    redirectTo: '/dashboard',
+    pathMatch: 'full',
+  },
+  {
+    path: 'dashboard',
     loadComponent: () =>
       import('./pages/dashboard/dashboard.component').then(
         (m) => m.DashboardComponent
       ),
     data: {
-      revalidate: 30,
+      revalidate: 15,
     },
   },
   {
@@ -21,7 +26,7 @@ export const routes: Routes = [
       ),
     resolve: { productDetail: productDetailResolver },
     data: {
-      revalidate: 30,
+      revalidate: 20 * 60,
       //* -> By setting the revalidate: 0, you can disable the scheduled (automatic) revalidation. The cache will never revalidate, unless you manually invalidate it using on-demand revalidation.
       // revalidate: 0,
     },
@@ -33,7 +38,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: '/dashboard',
     pathMatch: 'full',
   },
 ];

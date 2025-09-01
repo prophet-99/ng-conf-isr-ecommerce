@@ -39,7 +39,7 @@ export function app(): express.Express {
   // * Case 3: allowedQueryParams = ['id','color']
   // -> Only these params are part of the cache key.
   // -> /products?id=123&color=red ≠ /products?id=123&color=blue
-  let allowedQueryParams: string[] = ['id', 'framework'];
+  let allowedQueryParams: string[] = [];
 
   //* Register the ISR handler
   const isr = new ISRHandler({
@@ -55,7 +55,7 @@ export function app(): express.Express {
     // Optional
     // skipCachingOnHttpError: false, //* -> By default, when an http error occurs during the server-rendering of a page, we don't cache the page but fall back to client-side rendering, because it probably will have error messages or other content that is not intended to be cached.
     buildId: `${environment.buildTimestamp}`,
-    //backgroundRevalidation: true, //* -> Returns cached HTML immediately and revalidates/updates the cache in the background
+    // backgroundRevalidation: true, //* -> Returns cached HTML immediately and revalidates/updates the cache in the background
   });
 
   server.use(express.json());
@@ -64,6 +64,7 @@ export function app(): express.Express {
     '/api/invalidate',
     async (req, res) => await isr.invalidate(req, res)
   );
+
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
   //* Static files
